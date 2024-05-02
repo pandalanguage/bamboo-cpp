@@ -3,7 +3,12 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    string logo = R"(...)";
+    string logo = R"(  ____                        _         
+ |  _ \    __ _   _ __     __| |   __ _ 
+ | |_) |  / _` | | '_ \   / _` |  / _` |
+ |  __/  | (_| | | | | | | (_| | | (_| |
+ |_|      \__,_| |_| |_|  \__,_|  \__,_|
+                                        )";
     cout << logo << endl;
     string codepath = argv[1];
     ifstream code(codepath, ios::in);
