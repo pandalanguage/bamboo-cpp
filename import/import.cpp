@@ -2,12 +2,10 @@
 
 using namespace std;
 
-void import(std::ifstream& code, std::ofstream& outputFile) {
-    string pdcode;
-    if (code.eof()) return; // 检查是否已到达文件末尾
-
-    getline(code, pdcode, '\n');
-    if (pdcode == "#语言 = 简体中文") {
+void import(std::ifstream& code, std::ofstream& outputFile, string& language) {
+    if (language == "简体中文") {
+        string pdcode;
+        if (code.eof()) return; // 检查是否已到达文件末尾
         getline(code, pdcode, '\n');
         size_t index = pdcode.find("导入 ");
         if (index != string::npos) {
@@ -26,10 +24,5 @@ void import(std::ifstream& code, std::ofstream& outputFile) {
                 }
             }
         }
-        while (getline(code, pdcode, '\n')) {
-            outputFile << pdcode << '\n';
-        }
-    } else {
-        outputFile << pdcode << '\n';
     }
 }

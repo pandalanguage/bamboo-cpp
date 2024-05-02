@@ -7,8 +7,7 @@ int main(int argc, char** argv) {
  |  _ \    __ _   _ __     __| |   __ _ 
  | |_) |  / _` | | '_ \   / _` |  / _` |
  |  __/  | (_| | | | | | | (_| | | (_| |
- |_|      \__,_| |_| |_|  \__,_|  \__,_|
-                                        )";
+ |_|      \__,_| |_| |_|  \__,_|  \__,_|)";
     
     cout << logo << "熊猫语言-Bamboo C++编译器" << endl;
     string codepath = argv[1];
@@ -22,11 +21,16 @@ int main(int argc, char** argv) {
         cout << "无法创建或打开输出文件: import.pd" << endl;
         return 1;
     }
-    string pdcode;
-    getline(code, pdcode, '\n');
-    outputFile << pdcode << "\n";
 
-    import(code, outputFile); // 调用处理导入的函数
+    // 获取并处理第一行
+    string language;
+    getline(code, language);
+    size_t hashtagPos = language.find("#语言 = ");
+    if (hashtagPos != string::npos) {
+        language = language.substr(hashtagPos + 7); // 删除"#语言 = "
+    }
+
+    import(code, outputFile, language); // 将第一行作为参数传递
 
     code.close();
     outputFile.close();
