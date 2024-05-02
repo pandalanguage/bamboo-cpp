@@ -9,7 +9,8 @@ int main(int argc, char** argv) {
  |  __/  | (_| | | | | | | (_| | | (_| |
  |_|      \__,_| |_| |_|  \__,_|  \__,_|
                                         )";
-    cout << logo << endl;
+    
+    cout << logo << "熊猫语言-Bamboo C++编译器" << endl;
     string codepath = argv[1];
     ifstream code(codepath, ios::in);
     if (!code.is_open()) {
